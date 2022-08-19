@@ -5,6 +5,20 @@ import DiaryList from './DiaryList';
 
 function App() {
 
+    // server.js
+  const jsonServer = require('json-server');
+  const server = jsonServer.create();
+  const router = jsonServer.router('db.json');
+  const middlewares = jsonServer.defaults();
+
+  // db.json를 조작하기 위해 lowdb를 사용
+  const low = require('lowdb');
+  const FileSync = require('lowdb/adapters/FileSync');
+  const adapter = new FileSync('db.json');
+  const db = low(adapter);
+
+  server.use(middlewares);
+
   const [data, setData] = useState([]);
 
   const dataId = useRef(0);

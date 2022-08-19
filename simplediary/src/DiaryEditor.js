@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const DiaryEditor = ({onCreate}) => {
 
@@ -53,13 +53,13 @@ const DiaryEditor = ({onCreate}) => {
                 />
         </div>
         <div>
-            <span>How are you today ? : </span>
+            <span>오늘의 기분은? : </span>
             <select name="emotion" value={state.emotion} onChange={handleChangeState}>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
+                <option value={1}>Terrible</option>
+                <option value={2}>Bad</option>
+                <option value={3}>Soso</option>
+                <option value={4}>Good</option>
+                <option value={5}>Best</option>
             </select>
         </div>
 
@@ -70,4 +70,4 @@ const DiaryEditor = ({onCreate}) => {
     );
 };
 
-export default DiaryEditor; 
+export default React.memo(DiaryEditor); 
